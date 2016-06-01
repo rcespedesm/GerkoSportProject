@@ -116,7 +116,7 @@ if(isset ($error))
 				foreach($productos->result_array() as $f)
 				{
 					echo "<tr>";
-						echo form_open(base_url()."index.php/c_pedido/addpro");
+						echo form_open(base_url()."index.php/c_pedido/addprolocal");
 						echo "<th>".$f['pro_nombre']."</th>";
 						echo '<th><input type="number" value="1" class="" name="can" required>  </input></th>';
 						echo form_hidden('cod', $f['pro_codigo']);
@@ -214,12 +214,8 @@ if(isset ($error))
 							<div class="panel-body">
 								<div class="form-group">
                             <div class="form-group col-lg-6 text-center">
-                                <label class="text-center"><strong>CLIENTE</strong></label>
-                                
-									<?php
-									$classe = 'class="form-control"';
-									echo form_dropdown('cliente', $clientes,'cat',$classe);
-									?>
+                                <label class="text-center"><strong>PEDIDO LOCAL</strong></label>
+                                <input type="text" class="form-control text-center" name="cliente" value="LOCAL" readonly>
                             </div>
 
 

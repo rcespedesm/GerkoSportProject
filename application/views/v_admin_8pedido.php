@@ -6,17 +6,18 @@
 	
 	<label><strong>Ingrese nombre del cliente para la busqueda</strong></label>
 	<div class="input-group col-lg-8">
-    <input id="buscar" type="search" class="search-input form-control" data-table="order-table" placeholder="Pedido"></div>
-        <span class="input-group-btn">
+    <input id="buscar" type="search" class="search-input form-control" data-table="order-table" placeholder="Pedido"></input></div>
+    <br>
 <?php
 if($this->session->userdata('menu') != 'v_menu_pro')
 { ?>
-		    <a href="<?= base_url(); ?>index.php/c_pedido/pedidonuevo" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> Registrar Nuevo</a>
+		    <a href="<?= base_url(); ?>index.php/c_pedido/pedidonuevo" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> REGISTRAR PEDIDO EXTERNO</a>
+		    
+		    <a href="<?= base_url(); ?>index.php/c_pedido/pedidonuevolocal" class="btn btn-primary btn-md"><i class="fa fa-plus"></i> REGISTRAR PEDIDO LOCAL</a>
 <?php
 }
 ?>
-        </span>
-    </input>
+    
         
 	</div>
 </div>

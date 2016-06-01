@@ -62,6 +62,18 @@ class C_Pedido extends CI_Controller {
 		$this->load->view('v_zpie');
 	}
 
+    public function pedidonuevolocal()
+	{
+		$this->cart->destroy();
+		$data['pedidos']=$this->m_pedido->get_all_pedidos();
+		$data['productos']=$this->m_producto->get_all_productos();
+		$data['lista']=$this->detalles();
+		
+		$this->load->view('v_acabeza');
+		$this->load->view('v_admin_8regpedidolocal',$data);
+		$this->load->view('v_zpie');
+	}
+
 
 	public function addpro()
 	{
@@ -81,6 +93,26 @@ class C_Pedido extends CI_Controller {
 		$data['productos']=$this->m_producto->get_all_productos();
 		$this->load->view('v_acabeza');
 		$this->load->view('v_admin_8regpedido',$data);
+		$this->load->view('v_zpie');
+	}
+
+	public function addprolocal()
+	{
+		$pro = $_POST['cod'];
+		$can = $_POST['can'];
+		$pre = $_POST['pre'];
+		$nom = $_POST['nom'];
+		$carrito=array(
+			'id'=> $pro,
+			'qty'=> $can,
+			'price'=>$pre,
+			'name'=> $nom,
+			'options'=> array()
+		);
+		$this->cart->insert($carrito);
+		$data['productos']=$this->m_producto->get_all_productos();
+		$this->load->view('v_acabeza');
+		$this->load->view('v_admin_8regpedidolocal',$data);
 		$this->load->view('v_zpie');
 	}
 
