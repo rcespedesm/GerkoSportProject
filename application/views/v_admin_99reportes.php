@@ -13,86 +13,45 @@
                 Reportes
             </div>
             <!-- /.panel-heading -->
-            <div class="panel-body">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#home" data-toggle="tab">Entrada de Materia Prima</a>
-                    </li>
-                    <li><a href="#profile" data-toggle="tab">Salida de Materia Prima</a>
-                    </li>
-                    <li><a href="#settings" data-toggle="tab">Pedido</a>
-                    </li>
-                    <li><a href="#alertas" data-toggle="tab">Alertas</a>
-                    </li>
-                </ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="home">
-                    	<?=form_open(base_url()."index.php/c_reportes/mprima")?>
-					</br>					
-					<div class="row">
-		               	<div class="from-group col-lg-3 control">
-		               		<h5>Mostrar Reporte desde </h5>
-		               	</div>
-		               	<div class="from-group col-lg-3 control">
-		               		<input type="date" class="form-control" id="" name="startD">
-		               	</div>
-		               	<div class="from-group col-lg-1 control">
-		               		<h5>hasta </h5>
-		               	</div>
-		               	<div class="from-group col-lg-3 control">
-		               		<input type="date" class="form-control" id="" name="endD">
-		               	</div>
-		               	<div class="from-group col-xs-2 control">
-		               		<input type="submit" class="btn btn-primary" value="Mostrar"></input>
-		               	</div>
-					</div>
-					</br>
-                        <?=form_close()?>
-                        <?php $this->load->view('reportes/v_reporte_mprima'); ?>
-                    </div>
-                    <div class="tab-pane fade" id="profile">
-                        <?=form_open(base_url()."index.php/c_reportes/mprima_salida")?>
-					</br>					
-					<div class="row">
-		               	<div class="from-group col-lg-3 control">
-		               		<h5>Mostrar Reporte desde </h5>
-		               	</div>
-		               	<div class="from-group col-lg-3 control">
-		               		<input type="date" class="form-control" id="" name="startD">
-		               	</div>
-		               	<div class="from-group col-lg-1 control">
-		               		<h5>hasta </h5>
-		               	</div>
-		               	<div class="from-group col-lg-3 control">
-		               		<input type="date" class="form-control" id="" name="endD">
-		               	</div>
-		               	<div class="from-group col-xs-2 control">
-		               		<input type="submit" class="btn btn-primary" value="Mostrar"></input>
-		               	</div>
-					</div>
-					</br>
-                        <?=form_close()?>
-                        <?php $this->load->view('reportes/v_reporte_mprima_salida'); ?>
-                    </div>
-                    <div class="tab-pane fade" id="messages">
-                        <h4>Producto</h4>
-                        <?php $this->load->view('reportes/v_reporte_producto'); ?>
-                    </div>
-                    <div class="tab-pane fade" id="settings">
-                        <h4>Pedido</h4>
-                        <?php $this->load->view('reportes/v_reporte_pedido'); ?>
-                    </div>
-                    <div class="tab-pane fade" id="alertas">
-                        <h4>Pedido</h4>
-                        <?php $this->load->view('reportes/v_reporte_alertas'); ?>
-                    </div>
-                </div>
-            </div>
-            <!-- /.panel-body -->
+		<div class="panel-body text-center">
+
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				    data-target=".navbar-ex1-collapse">
+			  <span class="sr-only">Desplegar navegación</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Reportes</a>
+		  </div>
+		 
+		  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+			   otro elemento que se pueda ocultar al minimizar la barra -->
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			  <li class="active"><a href="<?= base_url(); ?>index.php/c_reportes/pedidos_form">Pedidos</a></li>
+			  <li><a href="<?= base_url(); ?>index.php/c_reportes/alertas_form">Alertas</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  Materia Prima <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a href="<?= base_url(); ?>index.php/c_reportes/entrada_form">Entrada</a></li>
+				  <li><a href="<?= base_url(); ?>index.php/c_reportes/salida_form">Salida</a></li>
+				</ul>
+			  </li>
+			</ul>
+		  </div>
+		</nav>
+
         </div>
         <!-- /.panel -->
     </div>
 </div>  
 <script src="<?= base_url(); ?>complemento/morrisjs/morris.min.js"></script>
+
+
+

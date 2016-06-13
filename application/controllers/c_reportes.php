@@ -38,7 +38,7 @@ class C_reportes extends CI_Controller {
 		$data['detalles'] = $detalles;
 		$data['alertasReportes'] = $this->m_reportes->get_reporte_faltante();
 		$this->load->view('v_acabeza');
-		$this->load->view('v_admin_99reportes',$data);
+		$this->load->view('reportes/v_reporte_mprima',$data);
 		$this->load->view('v_zpie');	
 	}
 
@@ -59,8 +59,46 @@ class C_reportes extends CI_Controller {
 		$data['detalles'] = $detalles;
 		$data['alertasReportes'] = $this->m_reportes->get_reporte_faltante();
 		$this->load->view('v_acabeza');
-		$this->load->view('v_admin_99reportes',$data);
+		$this->load->view('reportes/v_reporte_mprima_salida',$data);
 		$this->load->view('v_zpie');	
+	}
+
+	public function alertas()
+	{
+		
+	}
+
+	public function pedidos()
+	{
+		
+	}
+
+	public function entrada_form()
+	{
+		$this->load->view('v_acabeza');
+		$this->load->view('reportes/v_reporte_mprima');
+		$this->load->view('v_zpie');
+	}
+
+	public function salida_form()
+	{
+		$this->load->view('v_acabeza');
+		$this->load->view('reportes/v_reporte_mprima_salida');
+		$this->load->view('v_zpie');
+	}
+
+	public function alertas_form()
+	{
+		$this->load->view('v_acabeza');
+		$this->load->view('reportes/v_reporte_mprima');
+		$this->load->view('v_zpie');
+	}
+
+	public function pedidos_form()
+	{
+		$this->load->view('v_acabeza');
+		$this->load->view('reportes/v_reporte_mprima');
+		$this->load->view('v_zpie');
 	}
 
 }

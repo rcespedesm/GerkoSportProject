@@ -14,6 +14,12 @@ from ingreso_materia_prima join materia_prima on ingreso_materia_prima.map_codig
 		return $query;
     }
 
+    public function fechas_interval_salida($start, $end)
+    {
+        $query = $this->db->query("select distinct(sm.smp_fecha_salida) from salida_materia_prima as sm join materia_prima as mp on im.map_codigo = mp.map_codigo where im.imap_fecha_ingreso >= '".$start."' and im.imap_fecha_ingreso <= '".$end."'");
+		return $query;
+    }
+
 	public function devolver_codigo_salida($codpedido)
     {
         $query = $this->db->query("select * from salida_materia_prima where ped_codigo = '".$codpedido."'");
