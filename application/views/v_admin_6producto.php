@@ -23,7 +23,7 @@ if($this->session->userdata('menu') != 'v_menu_admin')
 		
 		<label><strong>Ingrese nombre de la materia prima</strong></label>
 		<div class="form-group input-group">
-            <input id="buscar" type="search" class="search-input form-control" data-table="order-table" placeholder="Producto"></div>
+            <input id="buscar" name="buscar" type="search" class="search-input form-control" data-table="order-table" placeholder="Producto"></div>
 		        <span class="input-group-btn">
 		        <button type="submit" class="btn btn-success btn-md"><i class="fa fa-search"></i> Buscar</button>
 		        <?=form_close() ?>

@@ -90,7 +90,7 @@ class C_producto extends CI_Controller {
 	public function buscar()
 	{
 		$cat=$_POST['categoria'];
-		$nom=$_POST['bus'];
+		$nom=$_POST['buscar'];
 		$a=$this->m_producto->verif_map($nom,$cat);
 		if($a==0)
 		{
