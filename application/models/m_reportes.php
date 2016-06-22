@@ -63,5 +63,12 @@ return $query;
 									order by m.map_nombre");
 		return $query;
     }
+
+
+    public function get_all_pedidos_rango($start, $end)
+    {
+		$query = $this->db->query("select * from pedido join cliente on cliente.cli_codigo = pedido.cli_codigo where ped_fecha >= '".$start."' and ped_fecha <= '".$end."'");
+		return $query;
+    }
     
 }

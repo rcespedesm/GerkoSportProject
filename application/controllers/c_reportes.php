@@ -21,6 +21,25 @@ class C_reportes extends CI_Controller {
 		$this->load->view('v_zpie');
 	}
 
+	public function detalles()
+	{
+		$pedidos = $this->m_pedido->get_all_pedidos();
+		foreach($pedidos->result_array() as $f)
+		{
+			$lista[$f['ped_codigo']] = $this->m_pedido->get_pedido_productos($f['ped_codigo']);
+		}
+
+		if($pedidos->num_rows() != 0)
+		{
+			return $lista;
+		}
+		else
+		{
+			$lista=array();
+			return $lista;
+		}
+	}
+
 	public function mprima()
 	{
 		$startD=$_POST['startD'];
@@ -70,7 +89,24 @@ class C_reportes extends CI_Controller {
 
 	public function pedidos()
 	{
+		$startD = $_POST['startD'];
+		$endD = $_POST['endD'];
+
+
+
+		$alerta= $this->m_pedido->contar();
+				$sesion = array
+				(
+					'alerta' => $alerta
+				);
+		$this->session->set_userdata($sesion);
+		$this->cart->destroy();
+		$data['pedidos']=$this->m_reportes->get_all_pedidos_rango($startD, $endD);
+		$data['lista']=$this->detalles();
 		
+		$this->load->view('v_acabeza');
+		$this->load->view('reportes/v_reporte_pedido',$data);
+		$this->load->view('v_zpie');
 	}
 
 	public function entrada_form()
@@ -97,7 +133,7 @@ class C_reportes extends CI_Controller {
 	public function pedidos_form()
 	{
 		$this->load->view('v_acabeza');
-		$this->load->view('reportes/v_reporte_mprima');
+		$this->load->view('reportes/v_reporte_pedido');
 		$this->load->view('v_zpie');
 	}
 
