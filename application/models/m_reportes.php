@@ -16,7 +16,12 @@ from ingreso_materia_prima join materia_prima on ingreso_materia_prima.map_codig
 
     public function fechas_interval_salida($start, $end)
     {
-        $query = $this->db->query("select distinct(sm.smp_fecha_salida) from salida_materia_prima as sm join materia_prima as mp on im.map_codigo = mp.map_codigo where im.imap_fecha_ingreso >= '".$start."' and im.imap_fecha_ingreso <= '".$end."'");
+        $query = $this->db->query("SELECT detalle_salida_mp.map_codigo, mp.map_nombre, mp.map_un_medida, sum(detalle_salida_mp.dsmp_cantidad) as total
+FROM salida_materia_prima AS a
+JOIN detalle_salida_mp ON detalle_salida_mp.`smp-codigo` = a.smp_codigo
+JOIN materia_prima AS mp ON detalle_salida_mp.map_codigo = mp.map_codigo
+WHERE a.smp_fecha_salida >= '".$start."' and a.smp_fecha_salida <= '".$end."'
+GROUP BY detalle_salida_mp.map_codigo, mp.map_nombre, mp.map_un_medida ORDER BY SUM( detalle_salida_mp.dsmp_cantidad ) DESC ");
 		return $query;
     }
 
@@ -65,9 +70,19 @@ return $query;
     }
 
 
-    public function get_all_pedidos_rango($start, $end)
+    public function get_all_pedidos_rango($start, $end, $estado)
     {
-		$query = $this->db->query("select * from pedido join cliente on cliente.cli_codigo = pedido.cli_codigo where ped_fecha >= '".$start."' and ped_fecha <= '".$end."'");
+		if($estado == "Completado"){
+			$estado = "COMPLETADO";
+		}
+		if($estado == "Re-Enviar"){
+			$estado = "FALTA MATERIAL";
+		}	
+		if($estado == "Produccion"){
+			$estado = "PENDIENTE";
+		}		
+    
+		$query = $this->db->query("select * from pedido join cliente on cliente.cli_codigo = pedido.cli_codigo where ped_fecha >= '".$start."' and ped_fecha <= '".$end."' and ped_estado = '".$estado."'");
 		return $query;
     }
     

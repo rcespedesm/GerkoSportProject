@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2016 a las 04:37:06
--- Versión del servidor: 5.6.16
--- Versión de PHP: 5.5.11
+-- Tiempo de generación: 26-07-2016 a las 07:41:55
+-- Versión del servidor: 5.5.27
+-- Versión de PHP: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `gerkosport2`
+-- Base de datos: `gerkosport`
 --
 
 -- --------------------------------------------------------
@@ -448,8 +448,8 @@ CREATE TABLE IF NOT EXISTS `salida_materia_prima` (
 --
 
 INSERT INTO `salida_materia_prima` (`smp_codigo`, `smp_fecha_salida`, `ped_codigo`) VALUES
-(8, '2016-06-14', 13),
-(9, '2016-06-14', 13),
+(8, '2016-02-10', 13),
+(9, '2016-04-13', 13),
 (10, '2016-06-14', 11),
 (11, '2016-06-14', 10),
 (12, '2016-06-14', 10),
@@ -471,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `usu_password` varchar(20) NOT NULL,
   `usu_cargo` varchar(30) NOT NULL,
   PRIMARY KEY (`usu_codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -480,7 +480,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`usu_codigo`, `usu_nombre`, `usu_apellido`, `usu_telefono`, `usu_direccion`, `usu_login`, `usu_password`, `usu_cargo`) VALUES
 (1, 'Vladimir ', 'Copa Barreto', 4577889, 'Av. Petrolera', 'admin', 'admin', 'Administrador'),
 (5, 'pro', 'pro', 213123, 'pro', 'pro', 'pro', 'Encargado de Produccion'),
-(6, 'alm', 'alm', 1231, 'alm', 'alm', 'alm', 'Encargado de Almacen');
+(6, 'alm', 'alm', 1231, 'alm', 'alm', 'alm', 'Encargado de Almacen'),
+(7, 'Vladimir', 'Copa Barreto', 0, 'Avenida Suecia', 'superadmin', 'superadmin', 'SUPERADMIN');
 
 --
 -- Restricciones para tablas volcadas

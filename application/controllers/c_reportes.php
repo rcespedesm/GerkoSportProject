@@ -66,16 +66,8 @@ class C_reportes extends CI_Controller {
 		$startD=$_POST['startD'];
 		$endD=$_POST['endD'];
 
-		$data['fechas'] = $this->m_reportes->fechas_interval($startD,$endD);
+		$data['materiaprima'] = $this->m_reportes->fechas_interval_salida($startD,$endD);
 
-		$detalles = array();
-
-		foreach($data['fechas']->result_array() as $fecha)
-		{
-			$query = $this->m_reportes->get_detalles($fecha["imap_fecha_ingreso"]);
-			$detalles[$fecha["imap_fecha_ingreso"]]=$query;
-		}
-		$data['detalles'] = $detalles;
 		$data['alertasReportes'] = $this->m_reportes->get_reporte_faltante();
 		$this->load->view('v_acabeza');
 		$this->load->view('reportes/v_reporte_mprima_salida',$data);
@@ -91,9 +83,7 @@ class C_reportes extends CI_Controller {
 	{
 		$startD = $_POST['startD'];
 		$endD = $_POST['endD'];
-
-
-
+		$estado = $_POST['estado'];
 		$alerta= $this->m_pedido->contar();
 				$sesion = array
 				(
@@ -101,7 +91,7 @@ class C_reportes extends CI_Controller {
 				);
 		$this->session->set_userdata($sesion);
 		$this->cart->destroy();
-		$data['pedidos']=$this->m_reportes->get_all_pedidos_rango($startD, $endD);
+		$data['pedidos']=$this->m_reportes->get_all_pedidos_rango($startD, $endD, $estado);
 		$data['lista']=$this->detalles();
 		
 		$this->load->view('v_acabeza');
@@ -125,8 +115,9 @@ class C_reportes extends CI_Controller {
 
 	public function alertas_form()
 	{
+		$data['alertasReportes'] = $this->m_reportes->get_reporte_faltante();
 		$this->load->view('v_acabeza');
-		$this->load->view('reportes/v_reporte_mprima');
+		$this->load->view('reportes/v_reporte_alertas', $data);
 		$this->load->view('v_zpie');
 	}
 

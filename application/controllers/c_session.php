@@ -58,6 +58,8 @@ class C_session extends CI_Controller {
 										break;
 									case "Encargado de Produccion" : $menu = 'v_menu_pro';
 										break;
+									case "SUPERADMIN" : $menu = 'v_menu_superadmin';
+										break;
 								    }
 
 						$alerta= $this->m_pedido->contar();

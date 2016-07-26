@@ -50,17 +50,27 @@
 
 		<div class="row">
 		<?=form_open(base_url()."index.php/c_reportes/pedidos")?>
-           	<div class="from-group col-lg-3 control">
+           	<div class="from-group col-lg-2 control">
            		<h5>Mostrar Reporte desde </h5>
            	</div>
-           	<div class="from-group col-lg-3 control">
+           	<div class="from-group col-lg-2 control">
            		<input type="date" class="form-control" id="" name="startD">
            	</div>
            	<div class="from-group col-lg-1 control">
            		<h5>hasta </h5>
            	</div>
-           	<div class="from-group col-lg-3 control">
+           	<div class="from-group col-lg-2 control">
            		<input type="date" class="form-control" id="" name="endD">
+           	</div>
+           	<div class="from-group col-lg-1 control">
+           		<h5>Estado </h5>
+           	</div>
+           	<div class="from-group col-lg-2 control">
+				<select class="form-control" name="estado">
+				  <option>Completado</option>
+				  <option>Re-Enviar</option>
+				  <option>Produccion</option>
+				</select>
            	</div>
            	<div class="from-group col-xs-2 control">
            		<input type="submit" class="btn btn-primary" value="Mostrar"></input>
@@ -94,7 +104,6 @@
                             <th class="text-center">PRECIO TOTAL</th>
                             <th class="text-center">ESTADO</th>
                             <th class="text-center">DETALLE</th>
-                            <th class="text-center">ENVIAR</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,28 +120,7 @@
 						<td class='text-center'>
 							<a href='#' data-toggle='modal' data-target="#<?=$f['ped_codigo']?>"><i class='fa fa-paste fa-1x'></i></a>
 						</td>
-						<td class='text-center'>
-							<?php 
-							if($f['ped_estado'] == 'PENDIENTE')
-							{
-								echo form_open(base_url()."index.php/c_pedido/produccion");
-								echo '<button type="submit" class="btn btn-success btn-md"><i class="fa fa-share fa-1x"></i> Produccion</button>';
-								echo form_hidden('ped_codigo', $f['ped_codigo']);
-								echo form_close();
-							}
-							if($f['ped_estado'] == 'FALTA MATERIAL')
-							{
-								echo form_open(base_url()."index.php/c_pedido/reenviar");
-								echo '<button type="submit" class="btn btn-warning btn-md"><i class="fa fa-share fa-1x"></i> Re-Enviar</button>';
-								echo form_hidden('ped_codigo', $f['ped_codigo']);
-								echo form_close();
-							}
-							if($f['ped_estado'] == 'PRODUCCION')
-							{
-								echo '<button type="submit" class="btn btn-info btn-md"><i class="fa fa-share fa-1x"></i> COMPLETADO</button>';
-							}
-							?>
-						</td>
+						
 					<?php
 					}?>
                     </tbody>

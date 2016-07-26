@@ -82,7 +82,7 @@ if(isset ($error))
         		<table class="table table-bordered table-responsive" id="dataTables-example">
         			<thead>
                         <tr class="active">
-                            <th class="text-center">NOMBRE</th>
+                            <th class="text-center">MODELO</th>
                             <th class="text-center">PRECIO</th>
                             <th class="text-center">DESCRIPCION</th>
                             <th class="text-center">DETALLE</th>

@@ -129,12 +129,17 @@ function modificar_registro(a, b, c, d, e, f, g, h)
 			<td><?= $f['usu_login']?></td>
 			<td><?= $f['usu_password']?></td>
 			<td><?= $f['usu_cargo']?></td>
+				<?php
+				if($f['usu_cargo'] != "SUPERADMIN")
+				{?>
 			<td class='text-center'>
 				<a href='#' data-toggle='modal' data-target='#Modificar' onclick="modificar_registro('<?= $f['usu_codigo']?>','<?= $f['usu_nombre']?>','<?= $f['usu_apellido']?>','<?= $f['usu_telefono']?>','<?= $f['usu_direccion']?>','<?= $f['usu_login']?>','<?= $f['usu_password']?>','<?= $f['usu_cargo']?>')"><i class='fa fa-pencil fa-1x'></i></a>
 			</td>
 			<td class='text-center'>
 				<a href='#' data-toggle='modal' data-target='#Eliminar' onclick="eliminar_registro('<?= $f['usu_codigo']?>','<?= $f['usu_nombre']?>','<?= $f['usu_apellido']?>','<?= $f['usu_cargo']?>')"><i class='fa fa-trash-o fa-1x'></i></a>
 			</td>
+				<?php 
+				}?>   
 		</tr>
 		<?php }
 	}
